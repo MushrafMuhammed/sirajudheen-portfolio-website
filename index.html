@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!--link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"-->
     <link rel="icon" href="pp.jfif" type="image/gif" sizes="16x16">   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
 <header class="bg-dark" style="position: fixed; width: 100%; z-index: 1;">
@@ -18,7 +19,7 @@
     </div>
     <div class="col-md-6 col-3 my-auto" >
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler ml-auto " type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -160,7 +161,7 @@
 <section class="p-3 bg-dark" id="contact-section">
     <div class="container">
       <h1 class="text-center text-white" style="padding-top: 2em;">Contact me</h1>
-      <form class="contact-form" action="" id="contact-form" >
+      <form id="submit-form" action="">
         <div class="row">
           <div class="col-md-6">
           <div class="form-group text-white">
@@ -183,8 +184,8 @@
         </div>
         <div class="col-md-6">
           <div class="form-group text-white">
-            <label for="mobile">Mobile</label>
-            <input type="text" name="mobile" class="form-control"  pattern="^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$" title="Enter Valid mobile number ex.9811111111" required>
+            <label for="Mobile">Mobile</label>
+            <input type="text" name="Mobile" class="form-control"  pattern="^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$" title="Enter Valid mobile number ex.9811111111" required>
           </div>
         </div>
         <div class="col-md-12">
@@ -194,7 +195,7 @@
           </div>              
         </div>
          <div class="form-group text-center col-12">
-           <button type="submit" class="btn btn-danger" style="width: 100%;"><a class="text-white" href="#home-section">Submit</a></button>
+           <button type="submit" class="btn btn-danger" style="width: 100%;">Submit</button>
          </div>
           <div class="col-md-12 text-center text-white" >
             <i class="text-white ">follow me&ensp;</i>
@@ -232,10 +233,29 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 <!--for jquary-->
-<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+<!--script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script-->
 
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.js"></script>
 <script src="script.js"></script>
+<script>
+  $("#submit-form").submit((e)=>{
+          e.preventDefault()
+          $.ajax({
+              url:"https://script.google.com/macros/s/AKfycbxz1dApz9906SXLSucCNQwxfc8HvI4qlVvi5Cvw/exec",
+              data:$("#submit-form").serialize(),
+              method:"post",
+              success:function (response){
+                  alert("Form submitted successfully")
+                  window.location.replace("index.html")
+                  ///window.location.href="home-section"
+              },
+              error:function (err){
+                  alert("Something Error")
+  
+              }
+          })
+      })
+</script>
 <script>
   $('.navbar-nav>li>a').on('click', function(){
     $('.navbar-collapse').collapse('hide');

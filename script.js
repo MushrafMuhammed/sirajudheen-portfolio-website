@@ -14,7 +14,7 @@ $(document).ready(
           email: true
         },
         
-        mobile: {
+        Mobile: {
           required: true,
           number: true,
           minlength: 10
@@ -30,22 +30,9 @@ $(document).ready(
         },
       },
 
-      submitHandler: function (form) {
-        $.ajax({
-          url:
-            "https://script.google.com/macros/s/AKfycbxWtuIGHnUMC-ciRKbAvJJbRSXCgkyoaM-RfQoycA/exec",
-          data: $("#contact-form").serialize(),
-          method: "post",
-          success: function (response) {
-            alert("Form submitted successfully");
-            
-            window.location.href = "#home-section";
-          },
-          error: function (err) {
-            alert("Something Error");
-          },
-        });
-      },
-    });
-  })
-);
+      
+      
+  
+
+
+      
